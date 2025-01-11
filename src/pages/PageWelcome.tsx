@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
 import { useTypedStoreState } from "../store/hooks"
 import axios from "axios";
+import { Skill } from "../types";
 
 export const PageWelcome = () => {
 	const { message } = useTypedStoreState((state) => state.mainModel);
-	const [skills, setSkills] = useState([]);
+	const [skills, setSkills] = useState<Skill[]>([]);
 
 	useEffect(() => {
 		(async () => {
@@ -23,7 +24,7 @@ export const PageWelcome = () => {
 			<ul>
 				{skills.map(skill => {
 					return (
-						<li>{skill.name}</li>
+						<li key={skill.id}>{skill.name}</li>
 					)
 				})}
 			</ul>
