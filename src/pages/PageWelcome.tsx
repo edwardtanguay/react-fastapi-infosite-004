@@ -1,19 +1,8 @@
-import { useEffect, useState } from "react";
 import { useTypedStoreState } from "../store/hooks"
-import axios from "axios";
-import { Skill } from "../types";
 
 export const PageWelcome = () => {
 	const { message } = useTypedStoreState((state) => state.mainModel);
-	const [skills, setSkills] = useState<Skill[]>([]);
-
-	useEffect(() => {
-		(async () => {
-			const response = await axios.get("http://localhost:3355/skills")
-			const _skills = response.data
-			setSkills(_skills)
-		})();
-	},[])
+	const {skills} = useTypedStoreState(state => state.skillModel)
 
 	return (
 		<>
