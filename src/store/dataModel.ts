@@ -1,5 +1,5 @@
 import axios from "axios";
-import { Skill, SkillSchema } from "../types";
+import { RawSkillSchema, Skill } from "../types";
 
 export const getSkills = async () => {
 	return new Promise<Skill[]>((resolve, reject) => {
@@ -12,9 +12,9 @@ export const getSkills = async () => {
 					const _rawSkills: unknown[] = response.data;
 					const _skills: Skill[] = [];
 					for (const _rawSkill of _rawSkills) {
-						const parseResult = SkillSchema.safeParse(_rawSkill);
+						const parseResult = RawSkillSchema.safeParse(_rawSkill);
 						if (parseResult.success) {
-							const {id, idCode, name, description, url} =
+							const { id, idCode, name, description, url } =
 								parseResult.data;
 							const _skill: Skill = {
 								id: id,
@@ -22,7 +22,7 @@ export const getSkills = async () => {
 								name: name.trim(),
 								description: description.trim(),
 								url: url.trim(),
-								isOpen: false
+								isOpen: false,
 							};
 							_skills.push(_skill);
 						} else {

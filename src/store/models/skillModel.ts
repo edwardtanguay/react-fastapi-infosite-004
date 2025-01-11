@@ -10,6 +10,7 @@ export interface SkillModel {
 
 	// actions
 	setSkills: Action<this, Skill[]>;
+	saveSkill: Action<this, Skill>;
 
 	// thunks
 	loadSkillsThunk: Thunk<this>;
@@ -22,6 +23,12 @@ export const skillModel: SkillModel = {
 	// actions
 	setSkills: action((state, skills) => {
 		state.skills = structuredClone(skills);
+	}),
+	saveSkill: action((state, skill) => {
+		const index = state.skills.findIndex((s) => s.id === skill.id);
+		if (index !== -1) {
+			state.skills[index] = structuredClone(skill);
+		}
 	}),
 
 	// thunks
