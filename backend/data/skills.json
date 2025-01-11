@@ -1,7 +1,7 @@
 [
   {
     "idCode": "angular",
-    "title": "Angular",
+    "name": "Angular",
     "url": "https://onespace.pages.dev/techItems?id=36",
     "description": "together with React and Vue.js one of the three most popular JavaScript frameworks",
     "id": 1
@@ -1654,7 +1654,7 @@
   {
     "idCode": "graphite",
     "name": "Graphite",
-    "url": "",
+    "url": "https://graphiteapp.org",
     "description": "a monitoring tool that runs equally well on cheap hardware or Cloud infrastructure, teams use Graphite to track the performance of their websites, applications, business services, and networked servers",
     "id": 237
   },
