@@ -1,2 +1,8 @@
+node_modules
+dist
+.env
+.vscode/*
+.idea
+.DS_Store
 venv
 __pycache__
