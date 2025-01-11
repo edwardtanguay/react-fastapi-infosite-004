@@ -4,7 +4,11 @@ import { Skill } from "../types";
 export const PageWelcome = () => {
 	const { message } = useTypedStoreState((state) => state.mainModel);
 	const { skills } = useTypedStoreState((state) => state.skillModel);
-	const {saveSkill} = useTypedStoreActions(actions => actions.skillModel)
+	const { saveSkill, deleteSkillThunk } = useTypedStoreActions((actions) => actions.skillModel);
+
+	const handleDeleteSkill = (skill: Skill) => {
+		deleteSkillThunk(skill);
+	};
 
 	const handleToggleSkill = (skill: Skill) => {
 		skill.isOpen = !skill.isOpen;
@@ -42,6 +46,16 @@ export const PageWelcome = () => {
 											{skill.name}
 										</a>
 									</p>
+									<div className="flex justify-end">
+										<button
+											onClick={() =>
+												handleDeleteSkill(skill)
+											}
+											className=""
+										>
+											delete
+										</button>
+									</div>
 								</div>
 							)}
 						</li>
