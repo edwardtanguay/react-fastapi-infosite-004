@@ -9,17 +9,20 @@ export const getSkills = async () => {
 					"http://localhost:3355/skills"
 				);
 				if (response.status === 200) {
-					const _rawSkills: Skill[] = response.data;
+					const _rawSkills: unknown[] = response.data;
 					const _skills: Skill[] = [];
 					for (const _rawSkill of _rawSkills) {
 						const parseResult = SkillSchema.safeParse(_rawSkill);
 						if (parseResult.success) {
+							const {id, idCode, name, description, url} =
+								parseResult.data;
 							const _skill: Skill = {
-								id: _rawSkill.id,
-								idCode: _rawSkill.idCode.trim(),
-								name: _rawSkill.name.trim(),
-								description: _rawSkill.description.trim(),
-								url: _rawSkill.url.trim(),
+								id: id,
+								idCode: idCode.trim(),
+								name: name.trim(),
+								description: description.trim(),
+								url: url.trim(),
+								isOpen: false
 							};
 							_skills.push(_skill);
 						} else {
