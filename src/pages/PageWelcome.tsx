@@ -19,6 +19,14 @@ export const PageWelcome = () => {
 		<p>{message}</p>
 
 			<h2 className="text-2xl mt-3">{skills.length} Skills</h2>
+
+			<ul>
+				{skills.map(skill => {
+					return (
+						<li>{skill.name}</li>
+					)
+				})}
+			</ul>
 		</>
 	)
 }
